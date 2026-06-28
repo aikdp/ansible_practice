@@ -30,7 +30,7 @@
         tags:
           Environment: Dev
       loop: "{{ servers }}"
-      register: "{{ ec2_details }}"
+      register: ec2_details
     
     - name: Update route 53 records
       amazon.aws.route53:
