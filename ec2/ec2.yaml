@@ -3,7 +3,7 @@
   connection: local
   vars:
     hosted_zone: "telugudevops.online"
-  instances_ec2:
+  servers:
     - mysql
     - backend
     - frontend
@@ -19,7 +19,7 @@
       image_id: "ami-0220d79f3f480ecf5"
       tags:
         Environment: demo
-    loop: "{{ instances_ec2 }}"
+    loop: "{{ servers }}"
     register: ec2_info
     
   # - name: Update new r53 records
