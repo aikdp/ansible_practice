@@ -1,0 +1,8 @@
+- name: Install nginx
+  hosts: web
+  vars:
+    course: Devops
+    trainer: KDP
+    tools: aws
+  tasks:
+    - name: 
