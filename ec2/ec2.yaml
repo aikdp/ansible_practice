@@ -8,6 +8,12 @@
       - backend
       - frontend
   tasks:
+  - name: Install boto3 and botocore
+    ansible.builtin.pip:
+      name:
+        - boto3
+        - botocore
+    executable: pip3.13
   - name: Craete ec2 instance
     amazon.aws.ec2_instance:
       name: "{{ item }}"
