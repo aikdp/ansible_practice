@@ -20,7 +20,7 @@
       tags:
         Environment: demo
       loop: {{ instances_ec2 }}
-    register: {{ ec2_info }}
+    register: ec2_info
     
   # - name: Update new r53 records
   #   amazon.aws.route53:
