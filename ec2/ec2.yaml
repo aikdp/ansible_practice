@@ -14,8 +14,6 @@
       vpc_subnet_id: "subnet-0984c4f0a17f1f5e8"
       instance_type: "t3.micro"
       security_group: "sg-0ac0a4d72dc0142f5"
-      network_interfaces:
-        - assign_public_ip: true
       image_id: "ami-0220d79f3f480ecf5"
       tags:
         Environment: demo
