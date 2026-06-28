@@ -26,7 +26,7 @@
     amazon.aws.route53:
       state: present
       zone: {{ hosted_zone }}
-      record: {{ item.item }}.{{ hosted_zone }} 
+      record: "{{ item.item }}.{{ hosted_zone }}"
       type: A
       ttl: 60
       value: {{ item.instances[0].private_address }} 
