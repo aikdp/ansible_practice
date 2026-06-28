@@ -50,4 +50,4 @@
       ttl: 60
       value: "{{ item.instances[0].public_ip_address }}"
       overwrite: true
-    loop: "{{ ec2_info.results }}"
+    loop: "{{ ec2_instances.results }}"
