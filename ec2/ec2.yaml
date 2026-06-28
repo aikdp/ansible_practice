@@ -3,10 +3,10 @@
   connection: local
   vars:
     hosted_zone: "telugudevops.online"
-  servers:
-    - mysql
-    - backend
-    - frontend
+    servers:
+      - mysql
+      - backend
+      - frontend
   tasks:
   - name: Craete ec2 instance
     amazon.aws.ec2_instance:
