@@ -25,7 +25,10 @@
         Environment: demo
     loop: "{{ servers }}"
     register: ec2_instances
-    
+  
+  - name: Print facts of server details
+    ansible.builtin.debug:
+      msg: "{{ ec2_instances }}"
   # - name: Update new r53 records
   #   amazon.aws.route53:
   #     state: present
