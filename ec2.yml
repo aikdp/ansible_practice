@@ -13,9 +13,10 @@
   tasks:
     - name: install Python dependencies
       ansible.builtin.pip:
-      - boto3
-      - botocore
-      executable: pip3.11
+        name:
+        - boto3
+        - botocore
+        executable: pip3.11
     
     - name: Onboard 3 ec2 instances
       amazon.aws.ec2_instance:
