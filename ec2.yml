@@ -18,14 +18,14 @@
         - botocore
         executable: pip3.9
     
-    # - name: Onboard 3 ec2 instances
-    #   amazon.aws.ec2_instance:
-    #     name: "{{ item }}"
-    #     # key_name:
-    #     vpc_subnet_id: "{{ subnet_id }}"
-    #     instance_type: "{{Insta_type}}"
-    #     security_group: "{{ sg_id }}"
-    #     image_id: "{{ ami_id }}"
-    #     tags:
-    #       Environment: Dev
-    #   loop: "{{ servers }}"
+    - name: Onboard 3 ec2 instances
+      amazon.aws.ec2_instance:
+        name: "{{ item }}"
+        # key_name:
+        vpc_subnet_id: "{{ subnet_id }}"
+        instance_type: "{{Insta_type}}"
+        security_group: "{{ sg_id }}"
+        image_id: "{{ ami_id }}"
+        tags:
+          Environment: Dev
+      loop: "{{ servers }}"
