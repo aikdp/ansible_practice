@@ -1,0 +1,43 @@
+- name: Create EC2
+  hosts: local
+  connection: local
+  vars:
+    hosted_zone: "telugudevops.online"
+  instances_ec2:
+    - mysql
+    - backend
+    - frontend
+  tasks:
+  - name: Craete ec2 instance
+    amazon.aws.ec2_instance:
+      name: {{ item }}
+      vpc_subnet_id: "subnet-0984c4f0a17f1f5e8"
+      instance_type: "t3.micro"
+      security_group: "sg-0ac0a4d72dc0142f5"
+      network_interfaces:
+        - assign_public_ip: true
+      image_id: "ami-0220d79f3f480ecf5"
+      tags:
+        Environment: demo
+      loop: {{ instances_ec2 }}
+    register: {{ ec2_info }}
+    
+  - name: Update new r53 records
+    amazon.aws.route53:
+      state: present
+      zone: {{ hosted_zone }}
+      record: {{ item.item }}.{{ hosted_zone }} 
+      type: A
+      ttl: 60
+      value: {{ item.instances[0].private_address }} 
+    loop: {{ ec2_info.results }}
+
+  - name: Update new r53 records
+    amazon.aws.route53:
+      state: present
+      zone: {{ hosted_zone }}
+      record: {{ hosted_zone }} 
+      type: A
+      ttl: 60
+      value: {{ item.instances[0].public_address }} 
+    loop: {{ ec2_info.results }}
