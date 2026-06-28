@@ -41,7 +41,7 @@
         ttl: 60
         value: "{{ item.instances[0].private_ip_address }}" #192.167.0.2
         overwrite: true
-      loop: {{ ec2_info.results }}
+      loop: "{{ ec2_info.results }}"
 
     - name: Update route 53 records
       amazon.aws.route53:
@@ -52,4 +52,4 @@
         ttl: 60
         value: "{{ item.instances[0].public_ip_address }}" #192.167.0.2
         overwrite: true
-      loop: {{ ec2_info.results }}
+      loop: "{{ ec2_info.results }}"
