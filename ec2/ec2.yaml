@@ -22,22 +22,22 @@
       loop: {{ instances_ec2 }}
     register: {{ ec2_info }}
     
-  - name: Update new r53 records
-    amazon.aws.route53:
-      state: present
-      zone: {{ hosted_zone }}
-      record: "{{ item.item }}.{{ hosted_zone }}"
-      type: A
-      ttl: 60
-      value: {{ item.instances[0].private_ip_address }} 
-    loop: {{ ec2_info.results }}
+  # - name: Update new r53 records
+  #   amazon.aws.route53:
+  #     state: present
+  #     zone: {{ hosted_zone }}
+  #     record: "{{ item.item }}.{{ hosted_zone }}"
+  #     type: A
+  #     ttl: 60
+  #     value: {{ item.instances[0].private_ip_address }} 
+  #   loop: {{ ec2_info.results }}
 
-  - name: Update new r53 records
-    amazon.aws.route53:
-      state: present
-      zone: {{ hosted_zone }}
-      record: {{ hosted_zone }} 
-      type: A
-      ttl: 60
-      value: {{ item.instances[0].public_address }} 
-    loop: {{ ec2_info.results }}
+  # - name: Update new r53 records
+  #   amazon.aws.route53:
+  #     state: present
+  #     zone: {{ hosted_zone }}
+  #     record: {{ hosted_zone }} 
+  #     type: A
+  #     ttl: 60
+  #     value: {{ item.instances[0].public_address }} 
+  #   loop: {{ ec2_info.results }}
