@@ -48,6 +48,6 @@
       record: {{ hosted_zone }} 
       type: A
       ttl: 60
-      value: {{ item.instances[0].public_address }}
+      value: {{ item.instances[0].public_ip_address }}
     overwrite: true
     loop: {{ ec2_info.results }}
