@@ -1,6 +1,6 @@
 - name: Create instances for ansible project
   hosts: source
-  connection: source
+  connection: localhost
   vars:
     subnet_id: "subnet-049de8215a1b7877b"
     Insta_type: "t3.micro"
