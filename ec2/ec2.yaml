@@ -19,7 +19,7 @@
       image_id: "ami-0220d79f3f480ecf5"
       tags:
         Environment: demo
-      loop: "{{ instances_ec2 }}"
+    loop: "{{ instances_ec2 }}"
     register: ec2_info
     
   # - name: Update new r53 records
